@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buscador de Productos</title>
+  <link rel="icon" href="imagenes\logoCaraFeliz.webp" type="image/webp">
+  <!-- Vincula el archivo CSS de Bulma y el archivo de estilos personalizado -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Vincula el archivo JavaScript personalizado -->
+  <script defer src="script.js"></script>
+</head>
+
+<body class="has-background-primary-30 has-text-primary-30-invert">
+  <!-- Sección principal de la página -->
+  <section class="section">
+    <div class="container">
+      <!-- Campo de entrada para buscar un producto -->
+      <input class="input is-rounded input is-info" id="input" type="text" placeholder="Ingrese nombre del producto" /><br>
+
+      <!-- Botones para buscar un producto o agregar uno nuevo -->
+      <div id="botones">
+        <button class="button is-link" id="btnBuscar">Search</button> <!--Este botón fue en principio funcional para cumplir con el requerimiento, 
+        optamos por una búsqueda dinámica en su lugar por lo cual quedó obsoleto -->
+        <button class="js-modal-trigger button is-link"  data-target="modal-js-example">New product</button>
+      </div>
+
+      <!-- Filtros de ordenación por precio -->
+      <div id="filtros">
+        <label for="ordenar">Ordenar por Precio: </label>
+        <select id="ordenar">
+          <option value="">Seleccione</option>
+          <option value="menorAMayor">Menor a Mayor</option>
+          <option value="mayorAMenor">Mayor a Menor</option>
+        </select>
+      </div>
+    </div><br>
+
+    <!-- Contenedor para las tarjetas de productos -->
+    <div id="tarjetas" class="columns is-multiline"></div>
+    <!-- Contenedor para mostrar resultados adicionales -->
+    <div id="resultado"></div>
+  </section>
+  
+  <!-- Sección del carrito de compras -->
+  <div id="carrito" class="box">
+    <!-- Título del carrito con un color de texto oscuro -->
+    <h2 class="title has-text-dark">Carrito de compras:</h2>
+    <!-- Contenedor de los items del carrito -->
+    <div id="carritoItems" class="content"></div>
+  </div>
+  
+  <!-- Modal para mostrar los detalles de un producto -->
+  <div id="productModal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box">
+        <!-- Nombre del producto -->
+        <strong id="modalName" class="content"></strong><br>
+        <!-- Descripción del producto -->
+        <p id="modalDescription" class="content"></p>
+        <!-- Precio del producto -->
+        <small id="modalPrice" class="content"></small>
+      </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+  <!-- Modal para agregar un nuevo producto -->
+  <div id="modal-js-example" class="modal">
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+      <div class="box">
+        <!-- Campo de entrada para el nombre del producto -->
+        <input
+          id="Name"
+          class="input is-info m-2"
+          type="text"
+          placeholder="Product name"
+        />
+        <!-- Campo de entrada para la descripción del producto -->
+        <input
+          id="description"
+          class="input is-info m-2"
+          type="text"
+          placeholder="Product description"
+        />
+        <!-- Campo de entrada para el precio del producto -->
+        <input
+          id="price"
+          class="input is-info m-2"
+          type="text"
+          placeholder="Price"
+        />
+
+        <!-- Campo de carga de archivo para la imagen del producto -->
+        <div class="file">
+          <label class="file-label">
+            <input class="file-input" id="image" type="file" name="resume" />
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label"> Choose a file… </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie de modal con botones para guardar cambios o cancelar -->
+    <footer class="modal-card-foot">
+      <div class="buttons">
+        <button class="button is-success" id="Create">Save changes</button>
+        <button class="button">Cancel</button>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
